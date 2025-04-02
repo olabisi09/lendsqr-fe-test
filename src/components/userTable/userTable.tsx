@@ -75,9 +75,9 @@ export const UsersTable: React.FC<UsersTableProps> = ({ users }) => {
           {users.map((user, index) => (
             <tr key={index}>
               <td>{user.organization}</td>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.phoneNumber}</td>
+              <td>{user.name}</td>
+              <td>{user.personal.email}</td>
+              <td>{user.personal.phoneNumber}</td>
               <td>{user.dateJoined}</td>
               <td>
                 <span className={`status-badge ${getStatusClass(user.status)}`}>

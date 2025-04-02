@@ -4,6 +4,7 @@ import { mockUsers } from "../../data/mockUsers";
 import { UserMetricCard } from "../../components/userMetricCard/userMetricCard";
 import { UsersTable } from "../../components/userTable/userTable";
 import "./dashboard.scss";
+import Pagination from "../../components/pagination/pagination";
 
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,6 +15,15 @@ export default function Dashboard() {
     (currentPage - 1) * rowsPerPage,
     currentPage * rowsPerPage
   );
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleRowsPerPageChange = (rows: number) => {
+    setRowsPerPage(rows);
+    setCurrentPage(1); // Reset to first page when changing rows per page
+  };
 
   const metrics = [
     {
@@ -66,59 +76,14 @@ export default function Dashboard() {
       <div className="table-container">
         <UsersTable users={paginatedUsers} />
 
-        <div className="pagination">
-          <div className="pagination-info">
-            Showing
-            <select
-              value={rowsPerPage}
-              onChange={(e) => setRowsPerPage(Number(e.target.value))}
-              className="rows-select"
-            >
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-            out of {mockUsers.length}
-          </div>
-
-          <div className="pagination-controls">
-            <button
-              className="pagination-button prev"
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            >
-              &lt;
-            </button>
-
-            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-              const pageNum = i + 1;
-              return (
-                <button
-                  key={i}
-                  className={`pagination-button ${
-                    currentPage === pageNum ? "active" : ""
-                  }`}
-                  onClick={() => setCurrentPage(pageNum)}
-                >
-                  {pageNum}
-                </button>
-              );
-            })}
-
-            {totalPages > 5 && <span className="pagination-ellipsis">...</span>}
-
-            <button
-              className="pagination-button next"
-              disabled={currentPage === totalPages}
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
-            >
-              &gt;
-            </button>
-          </div>
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          rowsPerPage={rowsPerPage}
+          totalItems={mockUsers.length}
+          onRowsPerPageChange={handleRowsPerPageChange}
+        />
       </div>
     </div>
   );

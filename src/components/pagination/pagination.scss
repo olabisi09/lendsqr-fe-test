@@ -1,0 +1,85 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+  
+  .pagination-info {
+    display: flex;
+    align-items: center;
+    color: $text-light;
+    font-size: 14px;
+    
+    .rows-select {
+      margin: 0 5px;
+      padding: 5px 10px;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+      background-color: rgba(33, 63, 125, 0.1);
+      color: $primary-color;
+    }
+  }
+  
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    
+    .pagination-button {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      color: rgba(84, 95, 125, 0.6);
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: none;
+
+      &.next {
+        background-color: rgba(33, 63, 125, 0.1);
+        color: rgba(33, 63, 125, 1);
+
+        svg {
+          transform: rotate(-90deg);
+        }
+      }
+      &.prev {
+        background-color: rgba(33, 63, 125, 0.1);
+        color: rgba(33, 63, 125, 1);
+
+        svg {
+          transform: rotate(90deg);
+        }
+      }
+      
+      &.active {
+        color: $text-color;
+        font-weight: 500;
+      }
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      
+      &:hover:not(:disabled) {
+        border-color: $secondary-color;
+        color: $secondary-color;
+      }
+    }
+    
+    .pagination-ellipsis {
+      margin: 0 5px;
+      color: $text-color;
+    }
+  }
+}
+

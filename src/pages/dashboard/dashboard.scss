@@ -21,65 +21,6 @@
   .table-container {
     @include card;
     padding: 20px;
-    
-    .pagination {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-      flex-wrap: wrap;
-      gap: 15px;
-      
-      .pagination-info {
-        display: flex;
-        align-items: center;
-        color: $text-light;
-        font-size: 14px;
-        
-        .rows-select {
-          margin: 0 5px;
-          padding: 5px 10px;
-          border: 1px solid $border-color;
-          border-radius: 4px;
-          background-color: $background-light;
-          color: $primary-color;
-        }
-      }
-      
-      .pagination-controls {
-        display: flex;
-        align-items: center;
-        
-        .pagination-button {
-          width: 30px;
-          height: 30px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid $border-color;
-          background-color: $background-light;
-          color: $text-light;
-          margin: 0 5px;
-          cursor: pointer;
-          
-          &.active {
-            background-color: rgba($secondary-color, 0.1);
-            color: $secondary-color;
-            border-color: $secondary-color;
-          }
-          
-          &:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-          }
-        }
-        
-        .pagination-ellipsis {
-          margin: 0 5px;
-          color: $text-light;
-        }
-      }
-    }
   }
 }
 

@@ -26,6 +26,8 @@ const UserDetailsPage: React.FC<UserDetailsPageProps> = ({ onBack }) => {
     tier: 2,
     balance: "₦200,000.00",
     accountNumber: "9912458798/Providus Bank",
+    bank: "Providus Bank",
+    organization: "Lendsqr",
     personal: {
       fullName: "Grace Effiom",
       phoneNumber: "07060780922",
