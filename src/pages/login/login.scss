@@ -32,12 +32,23 @@
   flex-direction: column;
   justify-content: center;
 
+  input, button {
+    font-family: "Avenir", sans-serif;
+  }
+
+  .description {
+    padding-block-start: .625rem;
+  }
+
   & h1 {
     color: #213f7d;
   }
 
   & img {
     display: none;
+    width: 10.86rem;
+    height: 2.25rem;
+    margin-block-end: 2rem;
 
     @media (max-width: 1024px) {
       display: inline;
@@ -53,8 +64,7 @@
   width: 27.9375rem;
 }
 
-.loginInput {
-  position: relative;
+.login-input {
   width: 100%;
   padding-inline: 1rem;
   padding-block-start: 1.0938rem;
@@ -62,17 +72,30 @@
   font-size: .875rem;
   border-radius: 5px;
   color: #545F7D;
+  outline: none;
   border: 1px solid hsla(224°, 20%, 41%, 15%);
+}
 
+.password-input {
+  position: relative;
+  width: 100%;
+  padding-inline: 1rem;
+  font-size: .875rem;
+  border-radius: 5px;
+  color: #545F7D;
+  border: 1px solid hsla(224°, 20%, 41%, 15%);
+  
   & > input {
     border: none;
     outline: none;
     height: 100%;
     width: 100%;
+    padding-block-start: 1.0938rem;
+  padding-block-end: .7813rem;
   }
 }
 
-.showBtn {
+.show-btn {
   position: absolute;
   right: 0;
   top: 0;
@@ -91,7 +114,7 @@
   gap: 1.5rem;
 }
 
-.loginBtn {
+.login-btn {
   background-color: $primary;
   color: #fff;
   text-transform: uppercase;
@@ -100,4 +123,7 @@
   padding-block-end: .8125rem;
   width: 100%;
   text-align: center;
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: 10%;
 }

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import {
   ArrowIcon,
   AuditIcon,
@@ -32,6 +33,7 @@ interface NavItem {
   icon: React.ReactNode;
   label: string;
   active?: boolean;
+  path: string;
 }
 
 interface NavSection {
@@ -43,54 +45,97 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const navSections: NavSection[] = [
     {
       title: "",
-      items: [{ label: "Dashboard", icon: <HomeIcon /> }],
+      items: [{ label: "Dashboard", icon: <HomeIcon />, path: "/dashboard" }],
     },
     {
       title: "CUSTOMERS",
       items: [
-        { label: "Users", icon: <UsersIcon /> },
-        { label: "Guarantors", icon: <GuarantorsIcon /> },
-        { label: "Loans", icon: <LoanIcon /> },
-        { label: "Decision Models", icon: <DecisionIcon /> },
-        { label: "Savings", icon: <SavingsIcon /> },
-        { label: "Loan Requests", icon: <LoanRequestIcon /> },
-        { label: "Whitelist", icon: <WhitelistIcon /> },
-        { label: "Karma", icon: <KarmaIcon /> },
+        { label: "Users", icon: <UsersIcon />, path: "/users" },
+        { label: "Guarantors", icon: <GuarantorsIcon />, path: "/guarantors" },
+        { label: "Loans", icon: <LoanIcon />, path: "/loans" },
+        {
+          label: "Decision Models",
+          icon: <DecisionIcon />,
+          path: "/decision-models",
+        },
+        { label: "Savings", icon: <SavingsIcon />, path: "/savings" },
+        {
+          label: "Loan Requests",
+          icon: <LoanRequestIcon />,
+          path: "/loan-requests",
+        },
+        { label: "Whitelist", icon: <WhitelistIcon />, path: "/whitelist" },
+        { label: "Karma", icon: <KarmaIcon />, path: "/karma" },
       ],
     },
     {
       title: "BUSINESSES",
       items: [
-        { label: "Organization", icon: <SuitcaseIcon /> },
-        { label: "Loan Products", icon: <LoanRequestIcon /> },
-        { label: "Savings Products", icon: <SavingsProductIcon /> },
-        { label: "Fees and Charges", icon: <FeesIcon /> },
-        { label: "Transactions", icon: <TransactionIcon /> },
-        { label: "Services", icon: <ServiceIcon /> },
-        { label: "Service Account", icon: <ServiceAccountIcon /> },
-        { label: "Settlements", icon: <SettlementIcon /> },
-        { label: "Reports", icon: <ReportIcon /> },
+        {
+          label: "Organization",
+          icon: <SuitcaseIcon />,
+          path: "/businesses/organization",
+        },
+        {
+          label: "Loan Products",
+          icon: <LoanRequestIcon />,
+          path: "/businesses/loan-products",
+        },
+        {
+          label: "Savings Products",
+          icon: <SavingsProductIcon />,
+          path: "/businesses/savings-products",
+        },
+        {
+          label: "Fees and Charges",
+          icon: <FeesIcon />,
+          path: "/businesses/fees-and-charges",
+        },
+        {
+          label: "Transactions",
+          icon: <TransactionIcon />,
+          path: "/businesses/transactions",
+        },
+        {
+          label: "Services",
+          icon: <ServiceIcon />,
+          path: "/businesses/services",
+        },
+        {
+          label: "Service Account",
+          icon: <ServiceAccountIcon />,
+          path: "/businesses/service-account",
+        },
+        {
+          label: "Settlements",
+          icon: <SettlementIcon />,
+          path: "/businesses/settlements",
+        },
+        { label: "Reports", icon: <ReportIcon />, path: "/businesses/reports" },
       ],
     },
     {
       title: "SETTINGS",
       items: [
-        { label: "Preferences", icon: <PreferenceIcon /> },
-        { label: "Fees and Pricing", icon: <FeesAndPricingIcon /> },
-        { label: "Audit Logs", icon: <AuditIcon /> },
+        {
+          label: "Preferences",
+          icon: <PreferenceIcon />,
+          path: "/settings/preferences",
+        },
+        {
+          label: "Fees and Pricing",
+          icon: <FeesAndPricingIcon />,
+          path: "/settings/fees-and-pricing",
+        },
+        {
+          label: "Audit Logs",
+          icon: <AuditIcon />,
+          path: "/settings/audit-logs",
+        },
       ],
     },
   ];
   return (
-    // <aside className={styles.sidebar}>
-    //   <p>switch organization</p>
-    //   <label>CUSTOMERS</label>
-    //   <div className={styles.menuList}>
-    //     {customerIcons.map((item) => (
-    //       <MenuItem key={item.label} label={item.label} icon={item.icon} />
-    //     ))}
-    //   </div>
-    // </aside>
     <>
       <div
         className={`sidebar-overlay ${isOpen ? "active" : ""}`}
@@ -117,10 +162,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                     key={itemIndex}
                     className={`nav-item ${item.active ? "active" : ""}`}
                   >
-                    <a href="#" className="nav-link">
+                    <NavLink
+                      to={item.path}
+                      end={true}
+                      className={({ isActive }) =>
+                        isActive ? "nav-link active" : "nav-link"
+                      }
+                    >
                       <span className="icon">{item.icon}</span>
                       <span className="label">{item.label}</span>
-                    </a>
+                    </NavLink>
                   </li>
                 ))}
               </ul>

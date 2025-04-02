@@ -4,13 +4,20 @@
 .header {
   height: $header-height;
   width: 100%;
-  padding: 0 20px;
+  padding-inline-start: 1.875rem;
+  padding-inline-end: 3.75rem;
   background-color: $background-light;
   border-bottom: 1px solid $border-color;
-  @include flex-between;
+  display: flex;
+  align-items: center;
   position: fixed;
   top: 0;
   z-index: 50;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding-inline-start: 1.25rem;
+  padding-inline-end: 1.25rem;
+  }
   
   .header-left {
     display: flex;
@@ -35,6 +42,16 @@
       @media (max-width: $breakpoint-tablet) {
         display: block;
       }
+    }
+  }
+
+  .rest {
+    @include flex-between;
+    width: 100%;
+    padding-inline-start: calc(#{$sidebar-width} - 115px);
+
+    @media (max-width: $breakpoint-tablet) {
+      justify-content: flex-end;
     }
   }
   

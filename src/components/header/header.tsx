@@ -18,33 +18,35 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
         </button>
       </div>
 
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search for anything"
-          className="search-input"
-        />
-        <button className="search-button">
-          <MagnifierIcon />
-        </button>
-      </div>
-
-      <div className="header-right">
-        <a href="#" className="docs-link">
-          Docs
-        </a>
-        <button className="notification-button">
-          <BellIcon />
-        </button>
-        <div className="user-profile">
-          <img
-            src="https://randomuser.me/api/portraits/men/32.jpg"
-            alt="User"
-            className="avatar"
+      <section className="rest">
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search for anything"
+            className="search-input"
           />
-          <span className="username">Adedeji</span>
+          <button className="search-button">
+            <MagnifierIcon />
+          </button>
         </div>
-      </div>
+
+        <div className="header-right">
+          <a href="#" className="docs-link">
+            Docs
+          </a>
+          <button className="notification-button">
+            <BellIcon />
+          </button>
+          <div className="user-profile">
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="User"
+              className="avatar"
+            />
+            <span className="username">Adedeji</span>
+          </div>
+        </div>
+      </section>
     </header>
   );
 };
