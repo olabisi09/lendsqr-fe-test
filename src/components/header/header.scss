@@ -1,0 +1,118 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.header {
+  height: $header-height;
+  width: 100%;
+  padding: 0 20px;
+  background-color: $background-light;
+  border-bottom: 1px solid $border-color;
+  @include flex-between;
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    
+    .logo-container {
+      margin-right: 20px;
+      
+      .logo {
+        height: 30px;
+      }
+    }
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: $primary-color;
+      font-size: 20px;
+      cursor: pointer;
+      
+      @media (max-width: $breakpoint-tablet) {
+        display: block;
+      }
+    }
+  }
+  
+  .search-container {
+    display: flex;
+    flex: 0 1 400px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid $border-color;
+    overflow: hidden;
+    
+    .search-input {
+      flex: 1;
+      border: none;
+      padding: 0 15px;
+      font-size: 14px;
+      
+      &:focus {
+        outline: none;
+      }
+    }
+    
+    .search-button {
+      width: 56px;
+      background-color: $secondary-color;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    
+    @media (max-width: $breakpoint-tablet) {
+      display: none;
+    }
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    
+    .docs-link {
+      margin-right: 20px;
+      color: $primary-color;
+      text-decoration: underline;
+      font-weight: 500;
+      
+      @media (max-width: $breakpoint-tablet) {
+        display: none;
+      }
+    }
+    
+    .notification-button {
+      background: none;
+      border: none;
+      color: $primary-color;
+      font-size: 18px;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+    
+    .user-profile {
+      display: flex;
+      align-items: center;
+      
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      
+      .username {
+        color: $primary-color;
+        font-weight: 500;
+        
+        @media (max-width: $breakpoint-mobile) {
+          display: none;
+        }
+      }
+    }
+  }
+}
