@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./userTable.scss";
 import { User } from "../../types/user";
 import { EllipsisIcon, FilterIcon } from "../../icons";
+import useOutsideClick from "../../hooks/useOutsideClick";
 
 interface UsersTableProps {
   users: User[];
@@ -9,6 +10,9 @@ interface UsersTableProps {
 
 export const UsersTable: React.FC<UsersTableProps> = ({ users }) => {
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
+  const dropdownRef = useOutsideClick<HTMLDivElement>(() =>
+    setActiveMenu(null)
+  );
 
   const toggleMenu = (index: number) => {
     setActiveMenu(activeMenu === index ? null : index);
@@ -88,7 +92,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ users }) => {
                   <EllipsisIcon />
                 </button>
                 {activeMenu === index && (
-                  <div className="actions-menu">
+                  <div ref={dropdownRef} className="actions-menu">
                     <button className="menu-item">View Details</button>
                     <button className="menu-item">Blacklist User</button>
                     <button className="menu-item">Activate User</button>

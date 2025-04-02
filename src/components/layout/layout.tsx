@@ -13,6 +13,10 @@ export default function Layout() {
 
   return (
     <div className="app">
+      <div
+        className={`sidebar-overlay ${sidebarOpen ? "active" : ""}`}
+        onClick={toggleSidebar}
+      ></div>
       <Header toggleSidebar={toggleSidebar} />
       <div className="content-wrapper">
         <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
